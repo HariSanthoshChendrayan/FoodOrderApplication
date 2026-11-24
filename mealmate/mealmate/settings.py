@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY", "local-development-key")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
@@ -141,8 +141,7 @@ MAILERS = {
     },
 }
 
-RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID")
-
-RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET")
+RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "rzp_test_U42RbXBKvMfmbD")
+RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET", "UR3cZGjE6cih1IR8Kt9ajzBg")
 # Enable popups for payment gateways (e.g. Razorpay modal/3DS/UPI authentication windows)
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
