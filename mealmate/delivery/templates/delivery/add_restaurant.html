@@ -22,8 +22,14 @@
 </head>
 <body>
     <div class="card">
-        <a href="open_show_restaurant" class="back-link">← Back to Restaurants</a>
+        <a href="{% url 'open_show_restaurant' %}" class="back-link">← Back to Restaurants</a>
         <h2>Add New Restaurant</h2>
+
+        {% if error %}
+        <div style="background: #fee2e2; border: 1px solid #fca5a5; color: #b91c1c; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 600; font-size: 0.875rem; text-align: center; margin-bottom: 1.25rem;">
+            {{ error }}
+        </div>
+        {% endif %}
 
         <form action="{% url 'add_restaurant' %}" method="post">
             {% csrf_token %}

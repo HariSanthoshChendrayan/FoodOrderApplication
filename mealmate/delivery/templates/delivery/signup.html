@@ -30,6 +30,12 @@
             <p class="subtitle">Join Meal Mate for easy food delivery</p>
         </div>
 
+        {% if error %}
+        <div style="background: #fee2e2; border: 1px solid #fca5a5; color: #b91c1c; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 600; font-size: 0.875rem; text-align: center; margin-bottom: 1.25rem;">
+            {{ error }}
+        </div>
+        {% endif %}
+
         <form action="{% url 'signup' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -56,7 +62,7 @@
         </form>
 
         <div class="footer-link">
-            Already have an account? <a href="open_signin">Sign In</a>
+            Already have an account? <a href="{% url 'open_signin' %}">Sign In</a>
         </div>
     </div>
 </body>

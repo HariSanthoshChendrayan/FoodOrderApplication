@@ -45,7 +45,7 @@
                     <div class="card-title">Add Restaurant</div>
                     <div class="card-desc">Register a new partner restaurant and configure setup settings.</div>
                 </div>
-                <a href="open_add_restaurant" class="btn btn-primary">ADD NEW RESTAURANT</a>
+                <a href="{% url 'open_add_restaurant' %}" class="btn btn-primary">ADD NEW RESTAURANT</a>
             </div>
 
             <div class="card">
@@ -54,7 +54,7 @@
                     <div class="card-title">Show Restaurants</div>
                     <div class="card-desc">View existing partner listings, update menus, or modify details.</div>
                 </div>
-                <a href="open_show_restaurant" class="btn btn-secondary">SHOW RESTAURANTS</a>
+                <a href="{% url 'open_show_restaurant' %}" class="btn btn-secondary">SHOW RESTAURANTS</a>
             </div>
         </div>
     </main>

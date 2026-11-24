@@ -38,13 +38,13 @@
 </head>
 <body>
     <header class="navbar">
-        <a href="open_show_restaurant" class="logo">🍽️ Meal Mate Admin</a>
+        <a href="{% url 'open_show_restaurant' %}" class="logo">🍽️ Meal Mate Admin</a>
     </header>
 
     <main class="container">
         <div class="top-bar">
             <h2>Partner Restaurants</h2>
-            <a href="open_add_restaurant" class="btn-add">+ Add Restaurant</a>
+            <a href="{% url 'open_add_restaurant' %}" class="btn-add">+ Add Restaurant</a>
         </div>
 
         <div class="table-card">

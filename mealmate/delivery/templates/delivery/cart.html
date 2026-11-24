@@ -92,8 +92,14 @@
                     <div class="item-info">
                         <h4 class="item-name">{{ item.name }}</h4>
                         <p class="item-desc">{{ item.description }}</p>
+                        <span style="font-size: 0.8rem; color: #64748b;">₹{{ item.price }} each</span>
                     </div>
-                    <div class="item-price">₹{{ item.price }}</div>
+                    <div class="quantity-controls" style="display: flex; align-items: center; gap: 0.5rem; background: #f1f5f9; padding: 0.35rem 0.65rem; border-radius: 10px;">
+                        <a href="{% url 'remove_from_cart' item.item.id username %}" title="Decrease quantity" style="text-decoration: none; color: #0f172a; font-weight: 800; font-size: 1.1rem; width: 24px; text-align: center;">−</a>
+                        <span style="font-weight: 800; font-size: 0.95rem; min-width: 20px; text-align: center;">{{ item.quantity }}</span>
+                        <a href="{% url 'add_to_cart' item.item.id username %}?next=cart" title="Increase quantity" style="text-decoration: none; color: #4f46e5; font-weight: 800; font-size: 1.1rem; width: 24px; text-align: center;">+</a>
+                    </div>
+                    <div class="item-price" style="min-width: 80px; text-align: right;">₹{{ item.line_total }}</div>
                 </div>
                 {% empty %}
                 <div style="background:#fff; border: 1px solid #e2e8f0; padding: 2.5rem; text-align: center; border-radius: 16px; color: #64748b;">
