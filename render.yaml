@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: mealmate-app
+    runtime: python
+    buildCommand: "bash build.sh"
+    startCommand: "cd mealmate && gunicorn mealmate.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "True"
+      - key: RAZORPAY_KEY_ID
+        value: rzp_test_U42RbXBKvMfmbD
+      - key: RAZORPAY_KEY_SECRET
+        value: UR3cZGjE6cih1IR8Kt9ajzBg
