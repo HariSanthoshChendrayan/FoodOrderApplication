@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6h57(=_^!2!5mzdyusaa8^az6ug%9sltc9uwoxf1rxb)0=b2qv'
-
+SECRET_KEY = os.environ.get("SECRET_KEY", "local-development-key")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
@@ -121,6 +121,17 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
@@ -130,10 +141,8 @@ MAILERS = {
     },
 }
 
+RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID")
 
-
-RAZORPAY_KEY_ID = 'rzp_test_Tgviii0ytSmkCJ'
-RAZORPAY_KEY_SECRET = '7WfvBqhQE8SsgayDVwjnGd2r'
-
+RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET")
 # Enable popups for payment gateways (e.g. Razorpay modal/3DS/UPI authentication windows)
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
